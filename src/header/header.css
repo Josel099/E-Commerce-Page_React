@@ -1,0 +1,33 @@
+.nav{
+    background-color: rgb(229, 236, 216);
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+
+}
+.logo-img{
+    height: 60px;
+}
+
+
+
+
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-right: 35px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5rem;
+    color: rgb(51, 50, 38);
+}
+
+ul li{
+ margin-right: 50px;
+}
+ul li:hover{
+    font-weight: bold;
+    text-decoration: underline;
+}

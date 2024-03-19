@@ -1,0 +1,13 @@
+.footer{
+    margin-top: 10px;
+    background-color: rgb(229, 236, 216);
+    height: 40px;
+    text-align: center;
+    padding-top: 20px;
+}
+p{
+     font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: .9rem;
+    color: rgb(29, 28, 24);
+    /* font-weight:bold ; */
+}
