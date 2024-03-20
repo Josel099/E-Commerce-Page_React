@@ -1,0 +1,63 @@
+h2,h3{
+    font-size: 100px;
+    text-align: center;
+    color: rgb(165, 185, 138);
+    margin: 15px;
+    
+    }
+
+    .card-cart-container{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        background-color: rgb(240, 245, 232);
+        /* border: 2px solid rgb(136, 138, 130); */
+        margin: 15px;
+        padding: 20px;
+        /* width: 20rem; */
+    
+    }
+    .card-cart{
+        margin: 10px;
+        height:25rem ;
+        width: 15rem;
+        border: 2px solid  rgb(186, 197, 167);
+        border-radius: 10px;
+        background-color: rgb(255, 251, 247);
+        padding: 10px;
+        text-align: center;
+        }
+    img{
+        height: 12rem;
+        width: 14rem;
+        
+    }
+    
+    h4,h3{
+        margin-top: 10px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 1.2rem;
+        color: rgb(51, 50, 38);
+    }
+    p .description{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-align: justify;
+        
+    }
+    button{
+        
+        width: 7rem;
+        height: 2rem;
+        border: 1.5px solid rgb(82, 82, 75);
+        border-radius: 10px;
+        background-color: rgb(48, 49, 112);
+        margin-top: 10px;
+        font-size: 17px;
+        font-weight: bold;
+        color:white;
+    }
+    button:hover{
+        background-color: rgb(89, 71, 153);
+    }
+
+
