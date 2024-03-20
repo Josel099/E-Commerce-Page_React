@@ -1,0 +1,43 @@
+.form-container{
+    background-color: rgb(247, 245, 242);
+}
+.form-section{
+    border: 2px solid rgb(168, 207, 132);
+    width: 350px;
+    min-height: 350px;
+    padding: 20px;
+    margin: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    background-color: rgb(254, 255, 250);
+}
+.each-form-row{
+    margin:px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-re{
+    color: rgb(231, 4, 4);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: small;
+    font-weight: lighter;
+}
+input{
+    border: 1px solid rgb(157, 194, 157);
+    height: 1.3rem;
+}
+textarea{
+    border: 1px solid rgb(157, 194, 157);
+}
+.submit-button{
+    margin-top: 20px;
+    color: white;
+    background-color: rgb(94, 165, 94);
+    font-weight: bold;
+}
+.submit-button:hover{
+    background-color:rgb(81, 189, 81);
+    font-weight: bolder;
+
+}

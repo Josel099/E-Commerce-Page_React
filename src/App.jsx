@@ -2,7 +2,7 @@ import './App.css'
 import Header from './header/HeaderComponent'
 import Footer from './footer/FooterComponent'
 import Product from './products/ProductComponent'
-
+import ContactForm from './contactForm/ContactFormComponent'
 function App() {
 
   const productArray = [
@@ -21,8 +21,9 @@ function App() {
   return (
     <>
      <Header/>
-    <Product productArray={productArray}/>
-     <Footer/>
+    <ContactForm/>
+    {/* <Product productArray={productArray}/> */}
+     {/* <Footer/> */}
     </>
   )
 }
