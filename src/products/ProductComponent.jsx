@@ -8,7 +8,6 @@ function addtoCart(){
 }
 return (
 <div className='card-container'>
-  <h2 id='count'>hi </h2>
 {props.productArray.map((product)=>(
    <div className="card" key={product.id}>
    <img src={product.img}

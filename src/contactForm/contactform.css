@@ -1,5 +1,7 @@
 .form-container{
-    background-color: rgb(247, 245, 242);
+    background-color: rgb(252, 247, 238);
+    display: flex;
+    justify-content: center;
 }
 .form-section{
     border: 2px solid rgb(168, 207, 132);
