@@ -25,31 +25,55 @@ function App() {
   const [cartItems,setCart] = useState([]);
   const [cartCount,setCount] = useState(0);
 
-/**==================================================
- * function for adding products to cart 
- * @param {*} product 
- * returning product from the productComponent 
- * then the product setting in to the state cartIems
- ==================================================*/
 
-const addtoCart=(product)=>{
-setCart(()=>[...cartItems,product])
-// setCart([...cartItems,product])
-console.log(product)
+/**================================================================================================
+ * Function for adding products to the cart.
+ * @param {Object} product The product to be added to the cart.
+ *                         This should contain at least an 'id' property.
+ *                         It represents the product being added to the cart.
+ *                         Example: { id: 1, name: 'Product A', price: 10 }
+ * The function checks if the product is already in the cart.
+ * If the same product is not already in the cart, it adds the product to the cart.
+ * And the if condition true it also increment the cartCount variable . To know the number of cartItems 
+ * @returns {void}
+ =====================================================================================================*/
+const addtoCart = (product) => {
+  // Check if the product is already in the cart
+  const isProductInCart = cartItems.some((item) => item.id === product.id);
+
+  // If the product is not already in the cart, add it
+  if (!isProductInCart) {
+    setCart(() => [...cartItems, product]);
+    setCount(cartCount + 1); // Increment cart count
+  }
+};
+
+
+
+
+/**======================================================================================================
+ * Function for removing the products from the cart 
+ * @param {object} product The product which want to be removed from the cart.
+ *                         This should contain at least an 'id' property.
+ *                         It represents the product being added to the cart.
+ *                         Example: { id: 1, name: 'Product A', price: 10 }
+ * After removing the product from the state , the cartCount is also updated : it will decremented by 1 .
+ * @returns {void}
+ =========================================================================================================*/
+const removeCart=(product)=>{
+const updatedCart=cartItems.filter((item)=>product.id !== item.id);
+setCart(updatedCart);
+setCount(cartCount-1)
 }
 
-
-const cartCountAdd= () => {
-  setCount(cartCount + 1);
-};
 
 
   return (
     <>
      <Header/>
-    <Product productArray={productArray} addtoCart={addtoCart} cartCountAdd={cartCountAdd}/>
+    <Product productArray={productArray} addtoCart={addtoCart}/>
     {/* <ContactForm/> */}
-    <CartComponent cartItems={cartItems} cartCount={cartCount}/>
+    <CartComponent cartItems={cartItems} cartCount={cartCount} removeCart={removeCart}/>
      <Footer/>
     
     </>

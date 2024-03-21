@@ -18,7 +18,7 @@ return (
    <h3>{product.title}</h3>
    <h4>{product.price} ₹</h4>
    <p className='description' >{product.description}</p>
-   <button onClick={()=>{props.addtoCart(product);()=>props.cartCountAdd}} >Add to cart</button>
+   <button onClick={()=>{props.addtoCart(product)}} >Add to cart</button>
  </div>
  
 )

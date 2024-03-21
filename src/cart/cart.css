@@ -44,20 +44,20 @@ h2,h3{
         text-align: justify;
         
     }
-    button{
+    .remove-button{
         
         width: 7rem;
         height: 2rem;
         border: 1.5px solid rgb(82, 82, 75);
         border-radius: 10px;
-        background-color: rgb(48, 49, 112);
+        background-color: rgb(216, 41, 41);
         margin-top: 10px;
         font-size: 17px;
         font-weight: bold;
         color:white;
     }
-    button:hover{
-        background-color: rgb(89, 71, 153);
+.remove-button:hover{
+        background-color: rgb(235, 24, 17);
     }
 
 

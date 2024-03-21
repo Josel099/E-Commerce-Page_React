@@ -15,6 +15,7 @@ function CartComponent(props) {
    <h3>{product.title}</h3>
    <h4>{product.price} ₹</h4>
    <p className='description' >{product.description}</p>
+   <button className='remove-button' onClick={()=>props.removeCart(product)}>Remove</button>
  </div>
 
 )
