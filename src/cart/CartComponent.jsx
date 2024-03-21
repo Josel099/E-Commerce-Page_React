@@ -12,7 +12,7 @@ function CartComponent(props) {
    <div className="card-cart" key={product.id}>
    <img src={product.img}
     alt="" />
-   <h3>{product.title}</h3>
+   <h3>{product.title} X {product.count}</h3>
    <h4>{product.price} ₹</h4>
    <p className='description' >{product.description}</p>
    <button className='remove-button' onClick={()=>props.removeCart(product)}>Remove</button>

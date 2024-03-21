@@ -12,20 +12,11 @@ function App() {
     {id: 3,img:"src/assets/iphone15.jpg",title: "Iphone 15",price: 85150,description:"Get ₹3000.0-₹62300.00 off a new iPhone 15 or iPhone 15 Plus when you trade in an iPhone 6s or newer. Buy now with free shipping."},
     {id: 4,img:"src/assets/laptopOmen.jpg",title: "HP Omen Laptop",price: 91150,description:" The future of Gaming — Delivering your every gaming wish With 13th Gen Intel Core. Shop Now! Long-lasting battery life with Fast Charge."},
     {id: 5,img:"src/assets/ssd.jpg",title: "Samsung SSD 1TB",price: 11150,description:"Buy Samsung 1TB SSD  online. Learn all about Portable Solid State Drive 870 QVO SATA including prices & offers."},
-    {id: 6,img:"src/assets/toycar.jpg",title: "Hybrid Toy car",price: 7150,description:"Buy Toy cars, trucks, planes, slot cars, race tracks for Kids at low prices in India.Toy car for childres they can play."},
-    {id: 7,img:"src/assets/product_airJordan-1.jpeg",title: "Nike Air Jordan",price: 56150,description:"Air Jordan is a type or brand of basketball shoes produced by Nike, Inc. since 1984. In the name “Air” means air cushion technology. "},
-    {id: 8,img:"src/assets/product_bag-6.jpg",title: "Williamson Satchel Bag",price: 21150,description:"This pvc coated fabric satchel features 1 slide pocket and 1 adjustable & detachable crossbody strap."},
-    {id: 9,img:"src/assets/iphone15.jpg",title: "Iphone 15",price: 85150,description:"Get ₹3000.0-₹62300.00 off a new iPhone 15 or iPhone 15 Plus when you trade in an iPhone 6s or newer. Buy now with free shipping."},
-    {id: 10,img:"src/assets/laptopOmen.jpg",title: "HP Omen Laptop",price: 91150,description:" The future of Gaming — Delivering your every gaming wish With 13th Gen Intel Core. Shop Now! Long-lasting battery life with Fast Charge."},
-    {id: 11,img:"src/assets/ssd.jpg",title: "Samsung SSD 1TB",price: 11150,description:"Buy Samsung 1TB SSD  online. Learn all about Portable Solid State Drive 870 QVO SATA including prices & offers."},
-    {id: 12,img:"src/assets/toycar.jpg",title: "Hybrid Toy car",price: 7150,description:"Buy Toy cars, trucks, planes, slot cars, race tracks for Kids at low prices in India.Toy car for childres they can play."},
-  
+    {id: 6,img:"src/assets/toycar.jpg",title: "Hybrid Toy car",price: 7150,description:"Buy Toy cars, trucks, planes, slot cars, race tracks for Kids at low prices in India.Toy car for childres they can play."}
   ];
 
   const [cartItems,setCart] = useState([]);
   const [cartCount,setCount] = useState(0);
-
-
 /**================================================================================================
  * Function for adding products to the cart.
  * @param {Object} product The product to be added to the cart.
@@ -37,15 +28,24 @@ function App() {
  * And the if condition true it also increment the cartCount variable . To know the number of cartItems 
  * @returns {void}
  =====================================================================================================*/
-const addtoCart = (product) => {
+const addtoCart = (product,count) => {
+  // console.log("selected count ",count)
   // Check if the product is already in the cart
-  const isProductInCart = cartItems.some((item) => item.id === product.id);
-
+  // const isProductInCart = cartItems.some((item) => item.id === product.id);
   // If the product is not already in the cart, add it
-  if (!isProductInCart) {
+  // if (!isProductInCart) {
+    product.count=count;
     setCart(() => [...cartItems, product]);
-    setCount(cartCount + 1); // Increment cart count
-  }
+
+
+    let cartData = JSON.stringify(cartItems);
+     localStorage.setItem("cartData", cartData);
+
+      // }
+
+      let totalCount = cartItems.length+1
+      console.log(totalCount)
+      setCount(totalCount); // finding the total count of products in the cartitems
 };
 
 
