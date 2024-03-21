@@ -3,7 +3,7 @@ import Header from './header/HeaderComponent'
 import Footer from './footer/FooterComponent'
 import Product from './products/ProductComponent'
 import CartComponent from './cart/CartComponent'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 
 function App() {
   const productArray = [
@@ -15,6 +15,10 @@ function App() {
     {id: 6,img:"src/assets/toycar.jpg",title: "Hybrid Toy car",price: 7150,description:"Buy Toy cars, trucks, planes, slot cars, race tracks for Kids at low prices in India.Toy car for childres they can play."}
   ];
 
+  useEffect(() =>{
+    let cartData = JSON.parse(localStorage.getItem("cartData"));
+    setCart(cartData)
+  })
   const [cartItems,setCart] = useState([]);
   const [cartCount,setCount] = useState(0);
 /**================================================================================================
@@ -38,7 +42,7 @@ const addtoCart = (product,count) => {
     setCart(() => [...cartItems, product]);
 
 
-    let cartData = JSON.stringify(cartItems);
+     cartData = JSON.stringify(cartItems);
      localStorage.setItem("cartData", cartData);
 
       // }
