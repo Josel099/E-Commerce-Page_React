@@ -8,7 +8,7 @@ function CartComponent(props) {
     <h3>cart count: {props.cartCount}</h3>
     <div className='card-cart-container'>
   
-{props.cartItems.map((product)=>(
+   {props.cartItems.map((product)=>(
    <div className="card-cart" key={product.id}>
    <img src={product.img}
     alt="" />

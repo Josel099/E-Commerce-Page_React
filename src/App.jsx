@@ -15,42 +15,82 @@ function App() {
     {id: 6,img:"src/assets/toycar.jpg",title: "Hybrid Toy car",price: 7150,description:"Buy Toy cars, trucks, planes, slot cars, race tracks for Kids at low prices in India.Toy car for childres they can play."}
   ];
 
-  useEffect(() =>{
-    let cartData = JSON.parse(localStorage.getItem("cartData"));
-    setCart(cartData)
-  })
+
   const [cartItems,setCart] = useState([]);
   const [cartCount,setCount] = useState(0);
-/**================================================================================================
- * Function for adding products to the cart.
- * @param {Object} product The product to be added to the cart.
- *                         This should contain at least an 'id' property.
- *                         It represents the product being added to the cart.
- *                         Example: { id: 1, name: 'Product A', price: 10 }
- * The function checks if the product is already in the cart.
- * If the same product is not already in the cart, it adds the product to the cart.
- * And the if condition true it also increment the cartCount variable . To know the number of cartItems 
+
+
+/**===========================================================================
+ * Retrieves cart data from localStorage when the component mounts.
+ * If cart data exists, it is parsed and used to initialize the cart state.
+ * The cart count is updated based on the length of the cart data.
+ * If cart data is not found, the cart count is set to 0.
+ ===============================================================================*/
+  useEffect(() => {
+     // Retrieve cart data from localStorage
+    let cartData = localStorage.getItem("cartData");
+   
+  // If cart data exists, parse and initialize the cart state
+    if (cartData) {
+      try {
+        cartData = JSON.parse(cartData);
+        setCart(cartData);
+        setCount(cartData.length);
+
+      } catch (error) {
+        console.error("Error parsing JSON data:", error);
+        alert("server is down");
+      }
+    } else setCount(0); // If cart data is not found, set the cart count to 0
+    
+    
+  }, []);
+  
+
+
+
+
+/**====================================================================================================
+ * Adds a product to the shopping cart.
+ * Updating the Total count in it . 
+ * Storing the added cart items in local storage  . 
+ * @param {Object} product - The product to be added to the cart. It should contain at least an 'id' property.
+ *                          Example: { id: 1, name: 'Product A', price: 10 }
+ * @param {number} countOfProduct - The quantity of the product to be added to the cart.
  * @returns {void}
- =====================================================================================================*/
-const addtoCart = (product,count) => {
-  // console.log("selected count ",count)
+ ========================================================================================================*/
+const addtoCart = (product, countOfProduct) => {
   // Check if the product is already in the cart
-  // const isProductInCart = cartItems.some((item) => item.id === product.id);
+  const isProductInCart = cartItems.some((item) => product.id === item.id);
+
   // If the product is not already in the cart, add it
-  // if (!isProductInCart) {
-    product.count=count;
-    setCart(() => [...cartItems, product]);
+  if (!isProductInCart) {
+    // Set the quantity of the product
+    product.count = countOfProduct;
+    
+    // Add the product to the cart and update cart count
+    const updatedCart = [...cartItems, product];
+    setCart(updatedCart);
+    setCount(cartCount + 1);
 
+    // Update cart data in localStorage
+    localStorage.setItem("cartData", JSON.stringify(updatedCart));
+  } else {
+    // If the product is already in the cart, update its count
+    const updatedCartItems = cartItems.map((item) =>
+      item.id === product.id ? { ...item, count: item.count + countOfProduct } : item
+    );
 
-     cartData = JSON.stringify(cartItems);
-     localStorage.setItem("cartData", cartData);
+    // Update the cart with the updated items
+    setCart(updatedCartItems);
 
-      // }
-
-      let totalCount = cartItems.length+1
-      console.log(totalCount)
-      setCount(totalCount); // finding the total count of products in the cartitems
+    // Update cart data in localStorage
+    localStorage.setItem("cartData", JSON.stringify(updatedCartItems));
+  }
 };
+
+
+
 
 
 
@@ -62,13 +102,22 @@ const addtoCart = (product,count) => {
  *                         It represents the product being added to the cart.
  *                         Example: { id: 1, name: 'Product A', price: 10 }
  * After removing the product from the state , the cartCount is also updated : it will decremented by 1 .
+ * after that the updated cart items sotre it in the local storage 
  * @returns {void}
  =========================================================================================================*/
 const removeCart=(product)=>{
+  // Decrement the cart count
+setCount(cartCount-1);
+// Filter out the product to be removed from the cart
 const updatedCart=cartItems.filter((item)=>product.id !== item.id);
+// Update the cart with the filtered cart items
 setCart(updatedCart);
-setCount(cartCount-1)
+// Update cart data in localStorage
+localStorage.setItem("cartData",JSON.stringify(updatedCart));
 }
+
+
+
 
 
 
