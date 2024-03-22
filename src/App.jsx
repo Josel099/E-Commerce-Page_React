@@ -123,6 +123,7 @@ localStorage.setItem("cartData",JSON.stringify(updatedCart));
 
   return (
     <>
+      
      <Header/>
     <Product productArray={productArray} addtoCart={addtoCart}/>
     {/* <ContactForm/> */}

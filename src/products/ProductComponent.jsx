@@ -11,6 +11,7 @@ const handleSelectChange = (e) => {
   // console.log("Selected count:", count); // Log the selected count
 };
 
+
 return (
   <>
   <h2>Market</h2>
@@ -24,7 +25,7 @@ return (
    <h4>{product.price} ₹</h4>
    <p className='description' >{product.description}</p>
 
-   <select name="" id="" onChange={handleSelectChange}>
+   <select  name="" id="" onChange={handleSelectChange}>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
