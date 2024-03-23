@@ -1,7 +1,7 @@
 import './App.css'
 import Header from './header/HeaderComponent'
 import Footer from './footer/FooterComponent'
-import Product from './products/ProductComponent'
+import Product from './productList/ProductListComponent'
 import CartComponent from './cart/CartComponent'
 import { useState,useEffect } from 'react'
 import ContextProvider from './ContextProvider'
