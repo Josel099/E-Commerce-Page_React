@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './product.css'
+import { MyContext } from '../ContextProvider';
+
+
+
 
 export default function (props) {
 
-const [count,setCount]=useState(1);
+const productArray = useContext(MyContext)
 
+const [count,setCount]=useState(1);
 const handleSelectChange = (e) => {
   const selectedCount = parseInt(e.target.value);
   setCount(selectedCount);
@@ -16,8 +21,8 @@ return (
   <>
   <h2>Market</h2>
 <div className='card-container'>
-  
-{props.productArray.map((product)=>(
+
+{productArray.map((product)=>(
    <div className="card" key={product.id}>
    <img src={product.img}
     alt="" />
@@ -37,8 +42,11 @@ return (
  </div>
  
 )
-
-)}
+)
+}
+{/* {
+  console.log(productArray)
+} */}
     </div>
     </>);
 }
