@@ -1,0 +1,51 @@
+.card{
+    height:25rem ;
+    width: 15rem;
+    border: 2px solid  rgb(186, 197, 167);
+    border-radius: 10px;
+    background-color: rgb(255, 251, 247);
+    padding: 10px;
+    text-align: center;
+    margin-top: 30px;
+    margin-right: 25px;
+}
+img{
+    height: 12rem;
+    width: 14rem;
+}
+
+h4,h3{
+    margin-top: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.2rem;
+    color: rgb(51, 50, 38);
+}
+p .description{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: justify;
+    
+}
+select{
+    width: 2.5rem;
+    border: 1px solid rgb(82, 82, 75);
+    border-radius: 7px;
+    background-color: rgb(139, 141, 170);
+    color: black;
+    font-size: large;
+    font-weight: bold;
+    margin: 7px;
+}
+button{
+    width: 7rem;
+    height: 2rem;
+    border: 1.5px solid rgb(82, 82, 75);
+    border-radius: 10px;
+    background-color: rgb(48, 49, 112);
+    margin-top: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    color:white;
+}
+button:hover{
+    background-color: rgb(89, 71, 153);
+}

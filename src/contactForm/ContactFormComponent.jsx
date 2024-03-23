@@ -23,7 +23,8 @@ function ContactFormComponent() {
         })
       }
   return (
-
+    <>
+<h2>Contact Form</h2>
 <div className='form-container'>
 <div className="form-section">
     <div className='each-form-row'>
@@ -55,6 +56,7 @@ function ContactFormComponent() {
      </div>
 </div>
 </div>
+</>
   )
 }
 
