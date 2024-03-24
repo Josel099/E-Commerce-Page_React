@@ -1,14 +1,15 @@
-import { React, useContext, useState } from "react";
+import { React, useContext, useEffect, useState,useRef } from "react";
 import "./productComponent.css";
 import { MyContext } from "../ContextProvider";
 
 
 
-function ProductComponent({ product }) {
+function ProductComponent({ product, selectRef}) {
 
 const {addtoCart}= useContext(MyContext);
+const [count, setCount] = useState(1);
 
-  const [count, setCount] = useState(1);
+
 
   /**
    * Handles the change event of the select input.
@@ -29,7 +30,7 @@ const {addtoCart}= useContext(MyContext);
       <p className="description">{product.description}</p>
 
       {/* Renders a select input for selecting the quantity */}
-      <select name="" id="" onChange={handleSelectChange}>
+      <select  ref={selectRef} onChange={handleSelectChange}>
         {[1, 2, 3, 4, 5].map((value) => (
           <option key={value} value={value}> {value} </option>))}
       </select>

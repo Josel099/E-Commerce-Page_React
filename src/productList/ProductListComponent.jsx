@@ -8,7 +8,7 @@ import { MyContext } from '../ContextProvider';
 
 export default function ProductListComponent() {
 
-  const {productArray} = useContext(MyContext);
+  const {productArray,selectRef} = useContext(MyContext);
 
 
 
@@ -19,7 +19,7 @@ return (
 <div className='card-container'>
 {/* {console.log(productArray)} */}
 {productArray.map((product)=>(
-  <ProductComponent key={product.id} product={product}/>))}
+  <ProductComponent key={product.id} product={product} selectRef={selectRef}/>))}
    
     </div>
     </>);

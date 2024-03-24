@@ -1,4 +1,4 @@
-import { children, React,createContext,useState,useEffect } from "react";
+import { children, React,createContext,useState,useEffect,useRef } from "react";
 export const MyContext = createContext();
 
 
@@ -20,6 +20,11 @@ export default function ContextProvider({children}) {
   const [cartItems,setCart] = useState([]);
   const [cartCount,setCount] = useState(0);
 
+  const selectRef = useRef(null); // Ref for the select input element
+
+  useEffect(()=>{
+    selectRef.current.focus();
+  },[]);
 
 
 
@@ -113,7 +118,7 @@ localStorage.setItem("cartData",JSON.stringify(updatedCart));
 
 
   return (
-    <MyContext.Provider  value={{ productArray,cartItems,setCart,cartCount,setCount,addtoCart, removeCart}}>
+    <MyContext.Provider  value={{ productArray,cartItems,setCart,cartCount,setCount,addtoCart, removeCart,selectRef}}>
 
     {children}
 
