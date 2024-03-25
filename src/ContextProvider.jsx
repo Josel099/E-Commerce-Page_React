@@ -20,11 +20,12 @@ export default function ContextProvider({children}) {
   const [cartItems,setCart] = useState([]);
   const [cartCount,setCount] = useState(0);
 
+
   const selectRef = useRef(null); // Ref for the select input element
 
-  useEffect(()=>{
-    selectRef.current.focus();
-  },[]);
+  // useEffect(()=>{
+  //   selectRef.current.focus();
+  // },[selectRef]);
 
 
 

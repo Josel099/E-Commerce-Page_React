@@ -1,6 +1,6 @@
 import { React, useContext, useEffect, useState,useRef } from "react";
 import "./productComponent.css";
-import { MyContext } from "../ContextProvider";
+import { MyContext } from "../../ContextProvider";
 
 
 

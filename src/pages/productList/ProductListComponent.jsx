@@ -1,7 +1,7 @@
 import './productListComponent.css'
 import ProductComponent from '../product/ProductComponent';
 import { useContext } from 'react';
-import { MyContext } from '../ContextProvider';
+import { MyContext } from '../../ContextProvider';
 
 
 
@@ -17,7 +17,7 @@ return (
   <>
   <h2>Market</h2>
 <div className='card-container'>
-{/* {console.log(productArray)} */}
+
 {productArray.map((product)=>(
   <ProductComponent key={product.id} product={product} selectRef={selectRef}/>))}
    
