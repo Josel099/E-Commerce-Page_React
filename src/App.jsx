@@ -5,6 +5,7 @@ import ContactFormComponent from "./pages/contactForm/ContactFormComponent";
 import Home from "./pages/home/Home"
 import MainLayout from "./mainLayout/MainLayout";
 import CartComponent from "./pages/cart/CartComponent";
+import ContextProvider from './ContextProvider'
 
 
 
@@ -33,7 +34,9 @@ const router = createBrowserRouter([
 
 function App() {
   return (
+<ContextProvider>
   <RouterProvider router={router}/>
+  </ContextProvider>
   )
 
 }

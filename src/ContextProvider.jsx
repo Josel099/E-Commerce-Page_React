@@ -6,26 +6,37 @@ export const MyContext = createContext();
 
 export default function ContextProvider({children}) {
 
+  const [cartItems,setCart] = useState([]); // state for the cart items 
+  const [cartCount,setCount] = useState(0); // state for the total cartitems count . 
+  const [productsData, setProductsData] = useState([]);  // state for the products data in the Home page 
 
 
-   const productArray = [
-        {id: 1,img:"src/assets/product_airJordan-1.jpeg",title: "Nike Air Jordan",price: 56150,description:"Air Jordan is a type or brand of basketball shoes produced by Nike, Inc. since 1984. In the name “Air” means air cushion technology. "},
-        {id: 2,img:"src/assets/product_bag-6.jpg",title: "Williamson Satchel Bag",price: 21150,description:"This pvc coated fabric satchel features 1 slide pocket and 1 adjustable & detachable crossbody strap."},
-        {id: 3,img:"src/assets/iphone15.jpg",title: "Iphone 15",price: 85150,description:"Get ₹3000.0-₹62300.00 off a new iPhone 15 or iPhone 15 Plus when you trade in an iPhone 6s or newer. Buy now with free shipping."},
-        {id: 4,img:"src/assets/laptopOmen.jpg",title: "HP Omen Laptop",price: 91150,description:" The future of Gaming — Delivering your every gaming wish With 13th Gen Intel Core. Shop Now! Long-lasting battery life with Fast Charge."},
-        {id: 5,img:"src/assets/ssd.jpg",title: "Samsung SSD 1TB",price: 11150,description:"Buy Samsung 1TB SSD  online. Learn all about Portable Solid State Drive 870 QVO SATA including prices & offers."},
-        {id: 6,img:"src/assets/toycar.jpg",title: "Hybrid Toy car",price: 7150,description:"Buy Toy cars, trucks, planes, slot cars, race tracks for Kids at low prices in India.Toy car for childres they can play."}
-      ];
+  /**===========================================================================
+ * Retrieves  data from  the local host (JSON server) for the home page when the component mounts . 
+ * if the data exists paresed to json and update the productsData state 
+ * If cart data is not found, the cart count is set to 0.
+ ===============================================================================*/
+  useEffect(() => {
+    fetch("http://localhost:3000/productsData")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setProductsData(data); // Update the state with fetched data
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
 
-  const [cartItems,setCart] = useState([]);
-  const [cartCount,setCount] = useState(0);
 
-
+/**==========================================================
+ * Reference for the select box in the product list.
+ * useEffect will work when the productList component mounts 
+ ==============================================================*/
   const selectRef = useRef(null); // Ref for the select input element
-
-  // useEffect(()=>{
-  //   selectRef.current.focus();
-  // },[selectRef]);
+  useEffect(()=>{
+    selectRef.current?.focus(); // option chaining 
+  },[]);
 
 
 
@@ -38,23 +49,20 @@ export default function ContextProvider({children}) {
  useEffect(() => {
   // Retrieve cart data from localStorage
  let cartData = localStorage.getItem("cartData");
-
 // If cart data exists, parse and initialize the cart state
  if (cartData) {
      cartData = JSON.parse(cartData);
      setCart(cartData);
      setCount(cartData.length);
       }else setCount(0); // If cart data is not found, set the cart count to 0
+
 }, []);
-
-
 
 
 
 /**====================================================================================================
  * Adds a product to the shopping cart.
  * Updating the Total count in it . 
- * Storing the added cart items in local storage  . 
  * @param {Object} product - The product to be added to the cart. It should contain at least an 'id' property.
  *                          Example: { id: 1, name: 'Product A', price: 10 }
  * @param {number} countOfProduct - The quantity of the product to be added to the cart.
@@ -74,34 +82,23 @@ const addtoCart = (product, countOfProduct) => {
     setCart(updatedCart);
     setCount(cartCount + 1);
 
-    // Update cart data in localStorage
-    localStorage.setItem("cartData", JSON.stringify(updatedCart));
   } else {
     // If the product is already in the cart, update its count
     const updatedCartItems = cartItems.map((item) =>
       item.id === product.id ? { ...item, count: item.count + countOfProduct } : item
     );
-
     // Update the cart with the updated items
     setCart(updatedCartItems);
 
-    // Update cart data in localStorage
-    localStorage.setItem("cartData", JSON.stringify(updatedCartItems));
   }
 };
     
-
-
-
 
 /**======================================================================================================
  * Function for removing the products from the cart 
  * @param {object} product The product which want to be removed from the cart.
  *                         This should contain at least an 'id' property.
- *                         It represents the product being added to the cart.
- *                         Example: { id: 1, name: 'Product A', price: 10 }
  * After removing the product from the state , the cartCount is also updated : it will decremented by 1 .
- * after that the updated cart items sotre it in the local storage 
  * @returns {void}
  =========================================================================================================*/
  const removeCart=(product)=>{
@@ -111,15 +108,22 @@ setCount(cartCount-1);
 const updatedCart=cartItems.filter((item)=>product.id !== item.id);
 // Update the cart with the filtered cart items
 setCart(updatedCart);
-// Update cart data in localStorage
-localStorage.setItem("cartData",JSON.stringify(updatedCart));
 }
 
+/**====================================================================================== 
+ * useEffect hook to update local storage whenever cartItems change
+ *  It  converts the cartItems array into a JSON string and stores it in the 'cartData' key of the local storage.
+ * This setup ensures that the local storage always updated with  the latest state of the  cart Items.
+ =========================================================================================*/
+ useEffect(()=>{
+  console.log("cart updated...");
+  localStorage.setItem("cartData", JSON.stringify(cartItems));
+},[cartItems]);
 
 
 
   return (
-    <MyContext.Provider  value={{ productArray,cartItems,setCart,cartCount,setCount,addtoCart, removeCart,selectRef}}>
+    <MyContext.Provider  value={{cartItems,setCart,cartCount,setCount,addtoCart, removeCart,selectRef,productsData}}>
 
     {children}
 
