@@ -14,7 +14,7 @@ export default function ContextProvider({children}) {
   /**===========================================================================
  * Retrieves  data from  the local host (JSON server) for the home page when the component mounts . 
  * if the data exists paresed to json and update the productsData state 
- * If cart data is not found, the cart count is set to 0.
+ * If cart data is not found , the cart count is set to 0.
  ===============================================================================*/
   useEffect(() => {
     fetch("http://localhost:3000/productsData")
