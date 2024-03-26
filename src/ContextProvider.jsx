@@ -71,7 +71,12 @@ export default function ContextProvider({children}) {
 const addtoCart = (product, countOfProduct) => {
   // Check if the product is already in the cart
   const isProductInCart = cartItems.some((item) => product.id === item.id);
+  
 
+
+
+
+  
   // If the product is not already in the cart, add it
   if (!isProductInCart) {
     // Set the quantity of the product
@@ -85,7 +90,12 @@ const addtoCart = (product, countOfProduct) => {
   } else {
     // If the product is already in the cart, update its count
     const updatedCartItems = cartItems.map((item) =>
-      item.id === product.id ? { ...item, count: item.count + countOfProduct } : item
+      item.id === product.id ?    
+      
+      
+      
+      
+      { ...item, count: item.count + countOfProduct } : item
     );
     // Update the cart with the updated items
     setCart(updatedCartItems);

@@ -34,7 +34,7 @@ const [count, setCount] = useState(1);
         {[1, 2, 3, 4, 5].map((value) => (
           <option key={value} value={value}> {value} </option>))}
       </select>
-
+   
       <button onClick={() => {addtoCart(product, count);}}>
         Add to cart
       </button>
