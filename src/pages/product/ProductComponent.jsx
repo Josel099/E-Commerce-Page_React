@@ -30,7 +30,8 @@ const [count, setCount] = useState(1);
       <p className="description">{product.description}</p>
 
       {/* Renders a select input for selecting the quantity */}
-      <select  ref={selectRef} onChange={handleSelectChange}>
+      <select  ref= 
+      {selectRef} onChange={handleSelectChange}>
         {[1, 2, 3, 4, 5].map((value) => (
           <option key={value} value={value}> {value} </option>))}
       </select>
